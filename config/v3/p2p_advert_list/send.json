@@ -1,8 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "P2P Advert List (request)",
-    "description": "Returns available adverts for use with `p2p_order_create`. **This API call is still in Beta.**",
-    "beta": 1,
+    "description": "Returns available adverts for use with `p2p_order_create` .",
     "type": "object",
     "auth_required": 1,
     "auth_scopes": [
@@ -54,7 +53,7 @@
             "default": 50
         },
         "local_currency": {
-            "description": "[Optional] Currency to conduct payment transaction in, defaults to the main currency for the client's country.",
+            "description": "[Optional] Currency to conduct payment transaction in. If not provided, only ads from country of residence will be returned.",
             "type": "string",
             "pattern": "^[a-zA-Z0-9]{2,20}$"
         },
@@ -73,12 +72,14 @@
             }
         },
         "sort_by": {
-            "description": "[Optional] How the results are sorted: best rate, or advertiser completion rate.",
+            "description": "[Optional] How the results are sorted.",
             "type": "string",
             "default": "rate",
             "enum": [
                 "completion",
-                "rate"
+                "rate",
+                "rating",
+                "recommended"
             ]
         },
         "use_client_limits": {

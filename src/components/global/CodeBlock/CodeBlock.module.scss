@@ -1,0 +1,79 @@
+.pre {
+  max-width: 100%;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--white);
+  border-radius: 0 0 4px 4px;
+  padding: 2.4rem;
+  margin-bottom: 1.6rem;
+  background: var(--json-midnight);
+  font-size: var(--text-size-s);
+  word-wrap: inherit;
+}
+
+.codeBlock {
+  margin-bottom: 4rem;
+
+  .sub_title {
+    font-size: var(--text-size-l);
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  p {
+    code {
+      font-weight: normal;
+      color: var(--red-01);
+    }
+  }
+
+  ol {
+    li {
+      a {
+        font-weight: var(--text-weight-normal);
+      }
+      code {
+        font-weight: var(--text-weight-normal);
+        color: var(--red-01);
+      }
+    }
+  }
+}
+
+.card {
+  border-radius: 6px;
+  background-color: var(--black-02);
+
+  .cardHeader {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-radius: 6px;
+    background-color: var(--json-midnight);
+    color: var(--gray-07);
+    line-height: 1.5;
+
+    .cardTitle {
+      width: 100%;
+      margin-bottom: unset;
+      padding-left: 2.4rem;
+    }
+    select {
+      background-color: inherit;
+      border: var(--black-01);
+      color: var(--gray-07);
+    }
+    option {
+      color: var(--black-01);
+    }
+  }
+}
+
+[data-state~="responsive.mobileS"],
+[data-state~="responsive.mobileM"] {
+  .codeBlockTitle {
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
+  }
+}

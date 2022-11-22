@@ -1,0 +1,228 @@
+.benefitsContainer {
+    .benefitsTitle {
+        margin-bottom: 1rem;
+        color: var(--text-01);
+        font-size: var(--text-size-xl);
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .benefitsIcons {
+        width: 65%;
+        flex-wrap: nowrap;
+        margin-bottom: 2rem;
+
+        .image {
+            background-size: contain;
+            width: 7.2rem;
+            height: 7.2rem;
+            display: inline-block;
+            margin: 0.8rem;
+
+            &.automationIcon {
+                background: url(/img/automation.svg) no-repeat;
+            }
+
+            &.integrationIcon {
+                background: url(/img/integration.svg) no-repeat;
+            }
+
+            &.executionIcon {
+                background: url(/img/execution.svg) no-repeat;
+            }
+        }
+
+        p {
+            font-size: 2.2rem !important;
+        }
+    }
+
+    .benefits {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+
+        div {
+            width: 48.6rem;
+        }
+
+        img {
+            margin-bottom: 4rem;
+        }
+
+        .personalisationImage,
+        .earnMoreImage {
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: var(--text-align-center);
+            width: 48.6rem;
+            height: 26rem;
+        }
+
+        .earnMoreContainer,
+        .personalisationContainer {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: var(--text-align-center);
+            margin: 4rem 0;
+        }
+
+        .earnMoreContainer {
+            .earnMoreImage {
+                background-image: url(/img/build-business.png);
+            }
+
+            .earnMore {
+                margin-left: 4rem;
+
+                h3 {
+                    font-size: var(--text-size-l);
+                }
+
+                p {
+                    font-size: 22px;
+                    line-height: 3.2rem;
+                }
+            }
+        }
+
+        .personalisationContainer {
+            flex-direction: row-reverse;
+
+            .personalisationImage {
+                background-image: url(/img/personalisation.png);
+            }
+
+            .personalisation {
+                margin-right: 4rem;
+
+                h3 {
+                    font-size: var(--text-size-l);
+                }
+
+                p {
+                    font-size: 2.2rem;
+                    line-height: 3.2rem;
+                }
+            }
+        }
+    }
+}
+
+[data-state*="responsive.mobile"] {
+    .benefitsContainer {
+        .benefitsIcons {
+            margin-top: 3rem;
+
+            img {
+                width: 4.8rem;
+                height: 4.8rem;
+            }
+
+            p {
+                font-size: var(--text-size-xxxs);
+            }
+        }
+
+        .benefits {
+            flex-wrap: wrap;
+            width: 90%;
+
+            div {
+                width: 100%;
+            }
+
+            h3 {
+                margin: 1.6rem 0;
+            }
+
+            img {
+                height: auto;
+            }
+
+            .personalisationContainer {
+                flex-direction: column-reverse;
+                margin: 0;
+
+                .personalisation {
+                    width: 90% !important;
+                    margin: 0 auto 30px;
+
+                    h3 {
+                        font-size: var(--text-size-m);
+                    }
+                }
+            }
+
+            .earnMoreContainer {
+                flex-direction: column;
+                margin: 0;
+
+                .earnMoreImage {
+                    margin: 4rem 0;
+                }
+
+                .earnMore {
+                    width: 90% !important;
+                    margin: 0 auto;
+
+                    h3 {
+                        font-size: var(--text-size-m);
+                    }
+                }
+            }
+        }
+    }
+
+    .benefitsContainer .benefits .personalisationImage,
+    .benefitsContainer .benefits .earnMoreImage {
+        max-width: 48.6rem;
+        height: 22rem;
+    }
+}
+
+[data-state~="responsive.mobileS"],
+[data-state~="responsive.mobileM"] {
+    .benefitsContainer {
+        .benefits {
+            img {
+                margin-bottom: 0;
+            }
+
+            .personalisationContainer {
+                .personalisationImage {
+                    width: 100%;
+                    margin: 0 auto;
+                }
+            }
+
+            .earnMoreContainer {
+                .earnMoreImage {
+                    width: 100%;
+                    margin: 0 auto;
+                }
+            }
+
+            .personalisation,
+            .earnMore {
+                margin: 0;
+
+                p {
+                    font-size: var(--text-size-sm);
+                }
+            }
+        }
+    }
+}
+
+[data-state~="responsive.mobileS"] {
+
+    .benefitsContainer .benefits .personalisationImage,
+    .benefitsContainer .benefits .earnMoreImage {
+        max-width: 48.6rem;
+        height: 15rem;
+    }
+}

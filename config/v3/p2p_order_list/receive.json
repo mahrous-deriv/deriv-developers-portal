@@ -36,6 +36,7 @@
                             "expiry_time",
                             "id",
                             "is_incoming",
+                            "is_reviewable",
                             "local_currency",
                             "payment_info",
                             "price",
@@ -43,7 +44,8 @@
                             "rate",
                             "rate_display",
                             "status",
-                            "type"
+                            "type",
+                            "verification_pending"
                         ],
                         "properties": {
                             "account_currency": {
@@ -98,6 +100,8 @@
                                 "additionalProperties": false,
                                 "required": [
                                     "id",
+                                    "is_online",
+                                    "last_online_time",
                                     "loginid",
                                     "name"
                                 ],
@@ -110,9 +114,36 @@
                                         "description": "The advertiser's unique identifier.",
                                         "type": "string"
                                     },
+                                    "is_online": {
+                                        "description": "Indicates if the advertiser is currently online.",
+                                        "type": "integer",
+                                        "enum": [
+                                            0,
+                                            1
+                                        ]
+                                    },
+                                    "is_recommended": {
+                                        "description": "Indicates that the advertiser was recommended in the most recent review by the current user.",
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ],
+                                        "enum": [
+                                            null,
+                                            0,
+                                            1
+                                        ]
+                                    },
                                     "last_name": {
                                         "description": "The advertiser's last name.",
                                         "type": "string"
+                                    },
+                                    "last_online_time": {
+                                        "description": "Epoch of the latest time the advertiser was online, up to 6 months.",
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ]
                                     },
                                     "loginid": {
                                         "description": "The advertiser's account identifier.",
@@ -143,6 +174,8 @@
                                 "additionalProperties": false,
                                 "required": [
                                     "id",
+                                    "is_online",
+                                    "last_online_time",
                                     "loginid",
                                     "name"
                                 ],
@@ -155,9 +188,36 @@
                                         "description": "The client's unique P2P identifier.",
                                         "type": "string"
                                     },
+                                    "is_online": {
+                                        "description": "Indicates if the advertiser is currently online.",
+                                        "type": "integer",
+                                        "enum": [
+                                            0,
+                                            1
+                                        ]
+                                    },
+                                    "is_recommended": {
+                                        "description": "Indicates that the client was recommended in the most recent review by the current user.",
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ],
+                                        "enum": [
+                                            null,
+                                            0,
+                                            1
+                                        ]
+                                    },
                                     "last_name": {
                                         "description": "The client's last name.",
                                         "type": "string"
+                                    },
+                                    "last_online_time": {
+                                        "description": "Epoch of the latest time the advertiser was online, up to 6 months.",
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ]
                                     },
                                     "loginid": {
                                         "description": "The client's account identifier.",
@@ -168,6 +228,10 @@
                                         "type": "string"
                                     }
                                 }
+                            },
+                            "completion_time": {
+                                "description": "The epoch time of the order completion.",
+                                "type": "integer"
                             },
                             "contact_info": {
                                 "description": "Seller contact information.",
@@ -219,6 +283,22 @@
                                     1
                                 ]
                             },
+                            "is_reviewable": {
+                                "description": "`1` if a review can be given, otherwise `0`.",
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ]
+                            },
+                            "is_seen": {
+                                "description": "`1` if the latest order changes have been seen by the current client, otherwise `0`.",
+                                "type": "integer",
+                                "enum": [
+                                    1,
+                                    0
+                                ]
+                            },
                             "local_currency": {
                                 "description": "Local currency for this order.",
                                 "type": "string",
@@ -261,6 +341,41 @@
                                 "description": "Conversion rate of the order, formatted to appropriate decimal places.",
                                 "type": "string"
                             },
+                            "review_details": {
+                                "title": "Review Details",
+                                "description": "Details of the review you gave for this order, if any.",
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                    "created_time",
+                                    "rating",
+                                    "recommended"
+                                ],
+                                "properties": {
+                                    "created_time": {
+                                        "description": "The epoch time of the review.",
+                                        "type": "integer"
+                                    },
+                                    "rating": {
+                                        "description": "Rating for the transaction, 1 to 5.",
+                                        "type": "integer",
+                                        "maximum": 5,
+                                        "minimum": 1
+                                    },
+                                    "recommended": {
+                                        "description": "`1` if the advertiser is recommended, `0` if not recommended.",
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ],
+                                        "enum": [
+                                            null,
+                                            0,
+                                            1
+                                        ]
+                                    }
+                                }
+                            },
                             "status": {
                                 "description": "Current order status.",
                                 "type": "string",
@@ -284,6 +399,26 @@
                                     "buy",
                                     "sell"
                                 ]
+                            },
+                            "verification_lockout_until": {
+                                "description": "If blocked for too many failed verification attempts, the epoch time that the block will end.",
+                                "type": "integer"
+                            },
+                            "verification_next_request": {
+                                "description": "If a verification request has already been made, the epoch time that another verification request can be made.",
+                                "type": "integer"
+                            },
+                            "verification_pending": {
+                                "description": "Indicates that the seller in the process of confirming the order.",
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ]
+                            },
+                            "verification_token_expiry": {
+                                "description": "Epoch time that the current verification token will expire.",
+                                "type": "integer"
                             }
                         }
                     }

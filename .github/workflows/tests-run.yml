@@ -1,0 +1,56 @@
+name: Tests run
+
+on:
+    issue_comment:
+        types: [edited]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+      - name: Capture Vercel preview URL
+        id: vercel_preview_url
+        uses: binary-com/vercel-preview-url-action@v1.0.5
+        with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout 🛎
+        uses: actions/checkout@v1
+      - name: Write the cypress.env.json file 📝
+        run: |
+          echo '${{ secrets.CYPRESS_ENV_CI }}' > cypress.env.json
+      - name: Run Cypress 🌲
+        uses: cypress-io/github-action@v4
+        env:
+          # use the deployment_url variable to set the url
+          CYPRESS_BASE_URL: ${{ steps.vercel_preview_url.outputs.vercel_preview_url }}
+            # after the test run completes
+      # store videos and any screenshots
+      # NOTE: screenshots will be generated only if E2E test failed
+      # thus we store screenshots only on failures
+      # Alternative: create and commit an empty cypress/screenshots folder
+      # to always have something to upload
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+      - name: Add comment to PR
+        id: loading_comment_to_pr
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            number: ${{ github.event.issue.number }}
+            header: cypress
+            message: |
+                E2E tests passed

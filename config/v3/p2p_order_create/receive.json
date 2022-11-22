@@ -27,6 +27,8 @@
                 "expiry_time",
                 "id",
                 "is_incoming",
+                "is_reviewable",
+                "is_seen",
                 "local_currency",
                 "payment_info",
                 "price",
@@ -34,7 +36,8 @@
                 "rate",
                 "rate_display",
                 "status",
-                "type"
+                "type",
+                "verification_pending"
             ],
             "properties": {
                 "account_currency": {
@@ -89,6 +92,8 @@
                     "additionalProperties": false,
                     "required": [
                         "id",
+                        "is_online",
+                        "last_online_time",
                         "loginid",
                         "name"
                     ],
@@ -101,9 +106,24 @@
                             "description": "The advertiser's unique identifier.",
                             "type": "string"
                         },
+                        "is_online": {
+                            "description": "Indicates if the advertiser is currently online.",
+                            "type": "integer",
+                            "enum": [
+                                0,
+                                1
+                            ]
+                        },
                         "last_name": {
                             "description": "The advertiser's last name.",
                             "type": "string"
+                        },
+                        "last_online_time": {
+                            "description": "Epoch of the latest time the advertiser was online, up to 6 months.",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
                         },
                         "loginid": {
                             "description": "The advertiser's account identifier.",
@@ -134,6 +154,8 @@
                     "additionalProperties": false,
                     "required": [
                         "id",
+                        "is_online",
+                        "last_online_time",
                         "loginid",
                         "name"
                     ],
@@ -146,9 +168,24 @@
                             "description": "The client's unique P2P identifier.",
                             "type": "string"
                         },
+                        "is_online": {
+                            "description": "Indicates if the advertiser is currently online.",
+                            "type": "integer",
+                            "enum": [
+                                0,
+                                1
+                            ]
+                        },
                         "last_name": {
                             "description": "The client's last name.",
                             "type": "string"
+                        },
+                        "last_online_time": {
+                            "description": "Epoch of the latest time the advertiser was online, up to 6 months.",
+                            "type": [
+                                "integer",
+                                "null"
+                            ]
                         },
                         "loginid": {
                             "description": "The client's account identifier.",
@@ -210,6 +247,22 @@
                         1
                     ]
                 },
+                "is_reviewable": {
+                    "description": "`1` if a review can be given, otherwise `0`.",
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                },
+                "is_seen": {
+                    "description": "`1` if the latest order changes have been seen by the current client, otherwise `0`.",
+                    "type": "integer",
+                    "enum": [
+                        1,
+                        0
+                    ]
+                },
                 "local_currency": {
                     "description": "Local currency for this order.",
                     "type": "string",
@@ -241,7 +294,8 @@
                             "required": [
                                 "fields",
                                 "is_enabled",
-                                "method"
+                                "method",
+                                "type"
                             ],
                             "properties": {
                                 "display_name": {
@@ -300,6 +354,35 @@
                                 "method": {
                                     "description": "Payment method identifier.",
                                     "type": "string"
+                                },
+                                "type": {
+                                    "description": "Payment method type.",
+                                    "type": "string",
+                                    "enum": [
+                                        "bank",
+                                        "ewallet",
+                                        "other"
+                                    ]
+                                },
+                                "used_by_adverts": {
+                                    "description": "IDs of adverts that use this payment method.",
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "used_by_orders": {
+                                    "description": "IDs of orders that use this payment method.",
+                                    "type": [
+                                        "array",
+                                        "null"
+                                    ],
+                                    "items": {
+                                        "type": "string"
+                                    }
                                 }
                             }
                         }
@@ -334,6 +417,14 @@
                     "enum": [
                         "buy",
                         "sell"
+                    ]
+                },
+                "verification_pending": {
+                    "description": "Indicates that an email has been sent to verify confirmation of the order.",
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
                     ]
                 }
             }

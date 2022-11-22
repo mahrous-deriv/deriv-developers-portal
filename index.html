@@ -1,61 +1,65 @@
----
-layout: page
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="/favicons/safari-pinned-tab.svg"
+      color="#f1594c"
+    />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#2b5797" />
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta  name="description" content="Deriv API allows you to build and customise your trading platform or app. Share your app with fellow traders and earn a commission.">
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NF7884S");
+    </script>
+    <!-- End Google Tag Manager -->
+    <title>Deriv API – Build and customise your trading app</title>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NF7884S"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-<h1>Welcome to the Binary.com API</h1>
-
-<p>
-  The Binary.com API allows developers to build applications and trading
-  interfaces that interact with our Binary.com system.
-</p>
-
-<p>
-  The API allows for most of the read and write methods that you will need to
-  support your application. If you have uses or needs that are not currently
-  supported by the API, visit our
-  <a href="https://binary.vanillacommunity.com/" target="_blank" rel="noopener"
-    >dev forum</a
-  >
-  and let us know!
-</p>
-
-<p>Starting with the API is easy:</p>
-
-<ul class="bullet">
-  <li>
-    Read the <a href="/websockets">Quickstart</a> and look at the
-    <a href="/demos">code samples</a> in different languages
-  </li>
-  <li>
-    <a href="/applications">Register</a> your application to obtain an
-    <code>app_id</code>
-  </li>
-  <li>Read the <a href="/guide">API guide</a></li>
-  <li>Explore the API using <a href="/api">API playground</a></li>
-</ul>
-
-<p>
-  We also provide a high-level API library to help you use our service easier.
-  <br />Get <strong>binary-live-api</strong> from
-  <a
-    href="https://github.com/binary-com/binary-live-api"
-    target="_blank"
-    rel="noopener"
-    >GitHub</a
-  >!
-</p>
-
-<p>Have more questions?</p>
-<p>
-  <a
-    class="button"
-    href="https://binary.vanillacommunity.com"
-    target="_blank"
-    rel="noopener"
-    ><span>Visit dev forum</span></a
-  >
-  or email
-  <a href="mailto:api-support@binary.com?subject=API+Question:+"
-    >api-support@binary.com</a
-  >
-</p>
+    <div id="root"></div>
+    <script type="module" src="./src/main.jsx"></script>
+  </body>
+</html>

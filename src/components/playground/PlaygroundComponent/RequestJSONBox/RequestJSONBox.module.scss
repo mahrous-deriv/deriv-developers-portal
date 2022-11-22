@@ -1,0 +1,124 @@
+.playgroundBox {
+  border-radius: 6px;
+  border: none;
+  margin-left: 0.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: var(--text-align-center);
+  justify-content: var(--text-align-center);
+
+  .inlineLabel {
+    position: absolute;
+    top: 0.8rem;
+    left: 1rem;
+    font-size: var(--text-size-xxxs);
+    padding: 0.2rem 0.4rem;
+    background-color: var(--white);
+  }
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--text-align-center);
+  justify-content: var(--text-align-center);
+  width: 80%;
+
+  .appRegistrationSubheader {
+    align-self: flex-start;
+    margin-bottom: 1.6rem;
+    font-size: var(--text-size-m);
+    text-align: var(--text-align-left);
+    line-height: var(--text-lh-m);
+    color: var(--black-03);
+  }
+}
+
+.textareaRequest {
+  border-radius: 4px;
+  resize: none;
+}
+
+.playgroundRequest {
+  min-height: 20rem;
+  padding: 1rem 1.2rem;
+  border: none;
+  color: var(--blue-04);
+  border: 1px solid var(--border-normal);
+}
+
+.registrationRequest {
+  min-height: 11.9rem;
+  padding: 1rem;
+  border: solid 1px var(--border-normal);
+  font-size: var(--text-size-s);
+}
+
+.jsonBtnWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: var(--text-align-center);
+  justify-content: var(--text-align-center);
+  margin: 2.6rem 0 4rem;
+
+  .btnReset button {
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 4px;
+    margin-right: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .btnResetPlayground button {
+    background-color: var(--black-04);
+    color: var(--white);
+    padding: 1rem 1.6rem;
+    border: var(--gray-04) 2px solid;
+  }
+
+  .grayBtnSubmit button {
+    padding: 1rem 1.6rem;
+    border: solid 2px var(--gray-09);
+    background-color: var(--white);
+    line-height: var(--text-lh-s);
+    letter-spacing: normal;
+    text-align: var(--text-align-center);
+    color: var(--black-03);
+  }
+
+  .btnSubmit button {
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem 1.6rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--red-01);
+    font-size: var(--text-size-xs);
+    font-weight: 700;
+    line-height: var(--text-lh-s);
+    letter-spacing: normal;
+    text-align: var(--text-align-center);
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--red-02);
+    }
+  }
+}
+
+.playgroundConsole {
+  margin-top: 0.2rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  width: 100%;
+}
+
+[data-state~="responsive.mobileM"] {
+  .formContent {
+    width: 100%;
+  }
+}

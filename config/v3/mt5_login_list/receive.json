@@ -134,9 +134,9 @@
                             "labuan",
                             "malta",
                             "maltainvest",
-                            "samoa",
                             "svg",
-                            "vanuatu"
+                            "vanuatu",
+                            "seychelles"
                         ]
                     },
                     "leverage": {
@@ -207,13 +207,19 @@
                             }
                         }
                     },
+                    "status": {
+                        "description": "MT5 account status.",
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
                     "sub_account_type": {
                         "description": "Sub account type",
                         "type": "string",
                         "enum": [
                             "financial",
-                            "financial_stp",
-                            "swap_free"
+                            "financial_stp"
                         ]
                     }
                 }

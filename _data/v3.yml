@@ -13,6 +13,8 @@ groups:
         title: 'Application: List'
       - name: app_markup_details
         title: 'Application: Markup Details'
+      - name: app_markup_statistics
+        title: 'Application: Markup Statistics'
       - name: app_register
         title: 'Application: Register'
       - name: app_update
@@ -45,6 +47,8 @@ groups:
         title: 'Copy Trading: List'
       - name: copytrading_statistics
         title: 'Copy Trading: Statistics'
+      - name: crypto_config
+        title: Cryptocurrency configurations
       - name: document_upload
         title: Document Upload
       - name: economic_calendar
@@ -113,6 +117,8 @@ groups:
         title: P2P Advertiser Create
       - name: p2p_advertiser_info
         title: P2P Advertiser Information
+      - name: p2p_advertiser_payment_methods
+        title: P2P Advertiser Payment Methods
       - name: p2p_advertiser_relations
         title: P2P Advertiser Relations
       - name: p2p_advertiser_update
@@ -125,10 +131,18 @@ groups:
         title: P2P Order Confirm
       - name: p2p_order_create
         title: P2P Order Create
+      - name: p2p_order_dispute
+        title: P2P Order Dispute
       - name: p2p_order_info
         title: P2P Order Information
       - name: p2p_order_list
         title: P2P Order List
+      - name: p2p_order_review
+        title: P2P Order Review
+      - name: p2p_payment_methods
+        title: P2P Payment Methods
+      - name: p2p_ping
+        title: P2P Ping
       - name: payment_methods
         title: Payment Methods
       - name: paymentagent_create
@@ -201,7 +215,11 @@ groups:
         title: Transactions Stream
       - name: transfer_between_accounts
         title: Transfer Between Accounts
+      - name: unsubscribe_email
+        title: Unsubscribe Email
       - name: verify_email
+        title: Verify Email
+      - name: verify_email_cellxpert
         title: Verify Email
       - name: website_status
         title: Server Status

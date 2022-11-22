@@ -1,8 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "P2P Order Create (request)",
-    "description": "Creates a P2P order for the specified advert. **This API call is still in Beta.**",
-    "beta": 1,
+    "description": "Creates a P2P order for the specified advert.",
     "type": "object",
     "auth_required": 1,
     "auth_scopes": [
@@ -48,6 +47,10 @@
                 "type": "integer"
             },
             "maxItems": 3
+        },
+        "rate": {
+            "description": "[Optional] Conversion rate from account currency to local currency, only applicable for floating rate adverts.",
+            "type": "number"
         },
         "subscribe": {
             "description": "[Optional] If set to 1, will send updates whenever there is an update to the order.",
